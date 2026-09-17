@@ -55,6 +55,7 @@ for (const row of KEY_ROWS) {
   for (const key of row) {
     const btn = document.createElement("button");
     btn.type = "button";
+    btn.tabIndex = -1;
     btn.className = "key";
     btn.dataset.id = key.id;
     if (key.wide) btn.dataset.wide = String(key.wide);
@@ -158,6 +159,7 @@ kbdEl.addEventListener("pointerdown", (e) => {
   if (!btn) return;
   const id = btn.dataset.id as PicoKeyId;
   flashKey(id, true);
+  btn.blur();
   dispatch(id);
 });
 
@@ -168,7 +170,22 @@ window.addEventListener("pointerup", () => {
   alt = false;
 });
 
-pwrBtn.addEventListener("click", () => setPower(!power));
+pwrBtn.tabIndex = -1;
+pwrBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  pwrBtn.blur();
+  setPower(!power);
+});
+
+device.addEventListener(
+  "keydown",
+  (e) => {
+    if ((e.key === "Enter" || e.key === " ") && (e.target as HTMLElement).closest("button")) {
+      e.preventDefault();
+    }
+  },
+  true,
+);
 
 window.addEventListener("keydown", (e) => {
   const id = hostEventToPicoId(e);
