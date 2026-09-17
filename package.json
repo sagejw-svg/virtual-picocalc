@@ -1,0 +1,17 @@
+{
+  "name": "virtual-picocalc",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Browser mock of the ClockworkPi PicoCalc: 320×320 LCD, backlit QWERTY, and a handful of built-in apps.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.9.2",
+    "vite": "^7.1.5"
+  }
+}
