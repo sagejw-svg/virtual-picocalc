@@ -44,6 +44,8 @@ Pushing `main` runs [`.github/workflows/pages.yml`](.github/workflows/pages.yml)
 
 Live site: <https://sagejw-svg.github.io/virtual-picocalc/>
 
+The first deploy needs Pages turned on once: **Settings → Pages → Source = GitHub Actions**. After that, re-run the workflow (or push `main` again). GitHub App tokens cannot create the Pages site; a repo admin has to flip that switch.
+
 ## License
 
 MIT
